@@ -35,6 +35,7 @@ case "${1:-"in"}" in
     echo ">> gvp v0.2.0"
     ;;
   "in")
+    mkdir -p {src,pkg,bin}
     mkdir -p .godeps/{src,pkg,bin}
 
     GVP_DIR="$(pwd)/.godeps"
@@ -43,6 +44,8 @@ case "${1:-"in"}" in
     PATH="$GOBIN:$PATH"
 
     export GOBIN GOPATH GVP_NAME PATH
+    PS1="(`basename \"$PWD\"`)$PS1"
+    export PS1
     echo ">> Local GOPATH set."
     ;;
   "help")
